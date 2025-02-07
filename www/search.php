@@ -54,7 +54,6 @@ $items_result = mysqli_query($conn, $search_query);
 </head>
 <body>
 <?php include('web_navbar.php'); ?>
-<h2>Search</h2>
 
 <form action="search.php" method="GET">
     <div class="form-row">

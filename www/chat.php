@@ -106,7 +106,7 @@ if (isset($_GET['user_id'])) {
     
 }
 ?>
-
+<?php include('chat_navbar.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -118,7 +118,7 @@ if (isset($_GET['user_id'])) {
     <title>Chat</title>
     
 </head>
-<?php include('web_navbar.php'); ?>
+
 <body>
 <main="container">
 <div class="chat-container">
@@ -126,7 +126,6 @@ if (isset($_GET['user_id'])) {
 
     <div class="user-list" id="userList">
         <button class="close-btn" onclick="toggleNavbar()">×</button>
-        <h3></h3>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Search Users...">
             <button onclick="searchUsers()"><i class="fas fa-search"></i></button>
@@ -177,6 +176,7 @@ if (isset($_GET['user_id'])) {
         </div>
     <?php } ?>
 </div>
+
 <form action="chat.php?user_id=<?php echo $recipient_id; ?>" method="POST" enctype="multipart/form-data" class="message-form">
     <label for="imageUpload" class="image-upload-btn">
         <i class="fas fa-camera"></i> <!-- Camera Icon -->
@@ -220,6 +220,11 @@ if (isset($_GET['user_id'])) {
         messageInput.style.height = "40px"; // Shrink back to default height
         messageInput.style.backgroundImage = "none"; // Remove image preview
     }
+}
+
+function toggleNavbar() {
+    var userList = document.getElementById("userList");
+    userList.classList.toggle("open"); 
 }
 
 

@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Get the logged-in user's ID
 $logged_in_user_id = $_SESSION['user_id'];
 
 // Check if a user_id is passed in the URL to display another user's profile
@@ -83,11 +82,12 @@ if (isset($_FILES['photo'])) {
 }
 
 // Fetch the items for the user (either logged-in user or another user)
-$item_query = "SELECT * FROM items WHERE user_id = ?";
+$item_query = "SELECT * FROM items WHERE user_id = ? ORDER BY created_at DESC"; 
 $item_stmt = mysqli_prepare($conn, $item_query);
 mysqli_stmt_bind_param($item_stmt, "i", $user_id);
 mysqli_stmt_execute($item_stmt);
 $item_result = mysqli_stmt_get_result($item_stmt);
+
 ?>
 <?php include 'web_navbar.php';?>
 <!DOCTYPE html>
@@ -135,7 +135,10 @@ $item_result = mysqli_stmt_get_result($item_stmt);
                                 <?php echo htmlspecialchars($item['type']); ?>
                             </span>
                         </p>
-                        <p><?php echo htmlspecialchars($item['description']); ?></p>
+                        <p><?php echo htmlspecialchars($item['description']); ?> <a href="item_detail.php?item_id=<?php echo $item['id']; ?>" class="item-link">
+                                View More...
+                            </a></p>
+                        
                         <p><strong><i class="fas fa-map-marker-alt"></i></strong>
                         <a href="https://www.google.com/maps?q=<?php echo urlencode(htmlspecialchars($item['location'])); ?>" 
                         target="_blank">
@@ -152,7 +155,9 @@ $item_result = mysqli_stmt_get_result($item_stmt);
                             <div class="item-actions">
                                 <a href="edit_item.php?item_id=<?php echo $item['id']; ?>" class="btn btn-edit">Edit</a>
                                 <a href="profile.php?delete_item_id=<?php echo $item['id']; ?>" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                
                             </div>
+               
                         <?php endif; ?>
                     </div>
                 <?php endwhile; ?>

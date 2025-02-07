@@ -52,7 +52,7 @@ if ($recipient_filter != '') {
 }
 
 // Order by timestamp
-$message_query .= " ORDER BY m.timestamp ASC";
+$message_query .= " ORDER BY m.timestamp DESC";
 
 // Execute query
 $message_result = mysqli_query($conn, $message_query);

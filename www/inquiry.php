@@ -89,8 +89,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $message_class = "error"; // Set the error class
     }
 }
+include('includes/db.php');
+if (!isset($_SESSION['user'])) {
+    include('navbar.php');
+}else{
+    include('web_navbar.php');
+}
 ?>
-<?php include('web_navbar.php'); ?>
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,20 +105,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="css/inquiry.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
     <form action="" method="POST">
-    <!-- Contact Information Section -->
+
     <div class="box">
     <div class="logo-container">
-        <img src="css/img/kitty.png" alt="Image Description" width="150" height="150" name="logo"/>
-        <h3 style="color: #1da1f2;">We'd Love to Hear From You</h3>
+        <img src="css/img/mail_1.gif" alt="Image Description" width="150" height="150" name="logo"/>
+        <h3 >We'd Love to Hear From You</h3>
 
     </div>
 
     <div class="contact-info">
-        <p><strong>Address:</strong> 1234 Some Street, Some City, Some Country</p>
+        <p><strong>Address: </strong><a href="https://www.google.com/maps?q=Anonas+Street+1016+628+Sta+Mesa+Metro+Manila" target="_blank">Anonas Street 1016 628 Sta Mesa Metro Manila</a></p>
         <p><strong>Email:</strong> <a href="mailto:annocmpo@gmail.com">support@lostandfound.com</a></p>
         <p><strong>Phone:</strong> +1 (234) 567-8901</p>
     </div>
@@ -122,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     <label for="email">Email:</label>
     <input type="email" name="email" required>
-    
+    <label for="email">Message:</label>
     <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea><br>
     
     <button type="submit">Send Message</button>
@@ -139,14 +147,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h3>Our Location</h3>
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6092.353951690452!2d120.99820237316161!3d14.574407162129646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9ed93f4c213%3A0x256db62ecb27be09!2sPolytechnic%20University%20of%20the%20Philippines%20-%20Sta.%20Mesa%2C%20Manila!5e0!3m2!1sen!2sph!4v1673964448707!5m2!1sen!2sph" 
-            width="62%" 
-            height="450" 
+            width="100%" 
+            height="100%" 
             style="border:0;" 
             allowfullscreen="" 
             loading="lazy">
         </iframe>
     </div>
-
+</div>
     </form>
 
     <script>

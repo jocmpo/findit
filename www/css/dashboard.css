@@ -10,7 +10,7 @@ body {
 .swiper-container {
   width: 100%;
   max-height: 450px;
-  padding: 0;
+  padding: 10px;
   position: relative;
   background-color: white;
   overflow: hidden; /* Prevent overflow */
@@ -45,13 +45,14 @@ body {
 }
 
 .item-card {
-  height: 500px; /* Fixed height */
-  max-height: 350px; /* Ensures it does not expand beyond this */
-  min-height: 350px; /* Prevents it from shrinking */
-  overflow: hidden; /* Prevents content from overflowing */
+  height: 500px; 
+  max-height: 350px; 
+  min-height: 350px; 
+  overflow: hidden;
   display: flex;
+  background-color: white;
   flex-direction: column;
-  justify-content: space-between; /* Ensures balanced spacing */
+  justify-content: space-between;
 }
 
 /* Mobile version */
@@ -64,11 +65,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Ensures balanced spacing */
-}
+    max-width: 100%;
+    margin: 0 auto;
+  }
 
 }
-
-
 
 .item-img {
   width: auto; 
@@ -172,7 +173,15 @@ body {
         max-height: 400px;
         max-width: 100%;
     }
-
+    .swiper-container {
+      width: 100%;
+      max-height: 450px;
+      padding: 10px;
+      position: relative;
+      background-color: white;
+      overflow: hidden; /* Prevent overflow */
+    }
+    
     .swiper-slide {
         width: 100%; 
         height: auto; 
@@ -209,8 +218,6 @@ body {
 .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
     max-width: 100%;
     margin: 0 auto;
     background: transparent;
@@ -218,7 +225,7 @@ body {
 
 /* Individual Stat Card */
 .stat {
-   width: 100%;
+   width: 90%;
     color: black;
     text-align: center;
     padding: 20px;
@@ -228,6 +235,9 @@ body {
 }
 
 /* Headings */
+.item-head {
+  padding-top: 10px;
+}
 .stat h3 {
     font-size: 25px;
     font-weight: 600;
@@ -314,9 +324,180 @@ input[type=radio] {
   }
 
   .card {
-    width: 90%; /* Make the card responsive */
+    width: 100%; /* Make the card responsive */
     height: auto; /* Allow height to adjust based on content */
     padding: 15px; /* Adjust padding if needed */
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
 
+.testimonials-container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  background: white;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #14171a; /* Dark Grey for contrast */
+  margin-bottom: 20px;
+}
+
+.testimonial-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  position: relative;
+  padding-top: 20px;
+}
+
+.testimonial-item {
+  position: absolute;
+  width: 30%;
+  height: 250px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  border: 1px solid #e1e8ed; /* Light Grey Border */
+}
+
+/* Middle Slide (Highlighted) */
+.testimonial-item.middle {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 3;
+}
+
+/* Left Slide (Smaller & Closer) */
+.testimonial-item.left {
+  transform: translateX(-80%) scale(0.9);
+  opacity: 0.85;
+  z-index: 2;
+}
+
+/* Right Slide (Smaller & Closer) */
+.testimonial-item.right {
+  transform: translateX(80%) scale(0.9);
+  opacity: 0.85;
+  z-index: 2;
+}
+
+
+/* Arrows */
+.carousel-arrows {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.arrow-left, .arrow-right {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #657786; /* Muted Grey */
+  user-select: none;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.arrow-left:hover, .arrow-right:hover {
+  color: #1da1f2; /* Soft Twitter Blue on hover */
+}
+
+/* Testimonial Text */
+.testimonial-item p {
+  font-size: 1rem;
+  color: #14171a; /* Dark Grey for readability */
+  margin-bottom: 10px;
+}
+
+.testimonial-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  
+}
+
+.quote {
+  height: 30px;
+  width: auto;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .testimonial-item {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .testimonial-item {
+    width: 70%;
+    height: 300px;
+  }
+
+  .arrow-left, .arrow-right {
+    font-size: 1.5rem;
+  }
+}
+
+/* Arrows */
+.carousel-arrows {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.arrow-left, .arrow-right {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  user-select: none;
+  padding: 10px;
+}
+
+.arrow-left:hover, .arrow-right:hover {
+  color: #007BFF;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .testimonial-item {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .testimonial-item {
+    width: 70%;
+  }
+  
+  .arrow-left, .arrow-right {
+    font-size: 1.5rem;
+  }
+}
+
+h4{
+  color:#1da1f2;
+}

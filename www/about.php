@@ -4,58 +4,34 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
 session_start();
-include('includes/db.php'); 
-
-$user_logged_in = isset($_SESSION['user_id']);
-
-// Default values for guests
-$user = 'Guest';
-$profile_pic = 'css/img/user.png'; // Default profile picture
-
-if ($user_logged_in) {
-    $user_id = $_SESSION['user_id']; // Retrieve the user ID from the session
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Fetch user details from the database
-    $stmt = $conn->prepare("SELECT name, photo FROM users WHERE id = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $stmt->bind_result($db_name, $db_profile_pic);
-
-    if ($stmt->fetch()) {
-        $name = !empty($db_name) ? $db_name : $name; // Use fetched name or default
-        $profile_pic = !empty($db_profile_pic) ? $db_profile_pic : $profile_pic; // Use fetched profile pic or default
-    }
-    $stmt->close();
+include('includes/db.php');
+if (!isset($_SESSION['user'])) {
+    include('navbar.php');
+}else{
+    include('web_navbar.php');
 }
-?>
-<?php include('web_navbar.php');
-
-?>
-
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Lost and Found</title>
+    <title>About Us</title>
     <link rel="stylesheet" href="css/terms.css">
+    
 </head>
 <body>
     <div class="container">
-        <h2>About Lost and Found</h2>
-
+        <h1><img src="css/img/information.png" width="35" height="35" class="icon" alt="">About</h1>
+        
         <section>
-            <h3><img src="css/img/target.png" width="25" height="25" alt="Description of the image">
+            <h3><img src="css/img/mission.gif" width="40" height="40" alt="Description of the image">
             Our Mission</h3>
             <p>At Lost and Found, our mission is to help individuals reunite with their lost belongings by providing an easy-to-use platform for reporting, searching, and finding lost items. Whether it's a misplaced wallet, lost phone, or missing keys, our goal is to connect people with their items in a timely and efficient manner.</p>
         </section>
 
         <section>
-            <h3><img src="css/img/settings.png" width="25" height="25" alt="Description of the image">
+            <h3><img src="css/img/management.gif" width="35" height="35" alt="Description of the image">
             How It Works</h3>
             <p>The process is simple and effective. Here’s how our Lost and Found platform works:</p>
             <ul>
@@ -66,7 +42,7 @@ if ($user_logged_in) {
         </section>
 
         <section>
-            <h3><img src="css/img/work.png" width="25" height="25" alt="Description of the image">
+            <h3><img src="css/img/work-experience.gif" width="35" height="35" alt="Description of the image">
             Why Choose Us?</h3>
             <p>We understand the frustration and inconvenience that comes with losing personal belongings. Our platform is designed with ease of use in mind, allowing you to quickly and effectively report and find lost items. Here’s why you should choose Lost and Found:</p>
             <ul>
@@ -84,7 +60,7 @@ if ($user_logged_in) {
         </section>
 
         <section>
-            <h3><img src="css/img/email.png" width="25" height="25" alt="Description of the image">
+            <h3><img src="css/img/mail.gif" width="35" height="35" alt="Description of the image">
             Contact Us</h3>
             <p>If you have any questions, feedback, or suggestions, feel free to contact us:</p>
             <ul>
@@ -94,8 +70,7 @@ if ($user_logged_in) {
         </section>
     </div>
 </body>
+</html>
 <?php
 include 'includes/footer.php';
 ?>
-
-</html>

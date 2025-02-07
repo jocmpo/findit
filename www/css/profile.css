@@ -28,7 +28,7 @@ p a:hover {
 .container {
     position: relative;
     width: 95%;
-    margin: 25px auto;
+    margin: 0 auto;
     padding-top: 10px;
     overflow: hidden;
 }
@@ -303,7 +303,6 @@ p a:hover {
 
     .profile-container {
         grid-template-columns: 1fr; /* One item per row */
-        padding-bottom: 60px;
     }
 
     .item-card {
@@ -402,3 +401,11 @@ a.chat-link:focus {
     outline-offset: 2px;
 }
 
+.item-link{
+    color: #1da1f2;  /* Twitter blue */
+    text-decoration: none;
+}
+
+.item-link:hover {
+    text-decoration: underline;
+}

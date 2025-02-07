@@ -1,7 +1,4 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
 
 $user_id = $_SESSION['user_id'];
 $photo = 'css/img/user.png';
@@ -19,12 +16,6 @@ if ($stmt->fetch() && $db_picture) {
 $stmt->close();
 
 ?>
-
-<nav class="mobnavbar">
-    <div class="mobnavbar-left">
-        <a onclick="openNav()" class="navbar-link"><img src="css/img/menu.svg"></a>
-    </div>
-</nav>
 
 <nav class="navbar">
     <div class="navbar-left">
@@ -83,3 +74,116 @@ $stmt->close();
         document.body.style.backgroundColor = "rgba(244, 244, 244)";
     }
 </script>
+
+<style>
+    
+    .navbar {
+    display: none;
+}
+
+@media (min-width: 700px) {
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4b84ff;
+    padding: 10px 20px;
+    top: 0;
+    z-index: 1000;
+    /* Ensure it stays on top of other content */
+    width: 100%;
+    position: fixed;
+    /* Fixed position for the navbar */
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    /* Prevents padding from affecting width */
+}
+
+/* Left side - Home Icon */
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-link:hover {
+    background-color: #296dff;
+    /* Highlighted color */
+    border-radius: 8px;
+}
+
+/* Center - Navbar Links */
+.navbar-center {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.navbar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-links li {
+    margin: 0 15px;
+}
+
+.navbar-link.active {
+    background-color: #296dff;
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Right side - Settings Icon and Dropdown */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    min-width: 150px;
+}
+
+.dropdown-content a {
+    color: #14171a;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: #e8f5fe;
+    color: #1da1f2;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+}
+
+</style>

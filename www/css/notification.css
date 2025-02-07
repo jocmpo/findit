@@ -9,17 +9,12 @@ body {
     min-height: 100vh;
 }
 
-h2 {
-    text-align: center;
-    margin-top: 20px;
-    color: #14171a;  /* Dark color for headings */
-}
-
 .container {
     max-width: 100%;
-    margin-left: calc((100% - 98%) / 2); /* Center based on 90% width */
-    margin-right: calc((100% - 98%) / 2);
-    padding: 20px;
+    margin-left: calc((100% - 95%) / 2); /* Center based on 90% width */
+    margin-right: calc((100% - 95%) / 2);
+    padding-top: 7px;
+
 }
 .notification-item:hover {
     background: #f0f4f8; /* Slightly darker background */
@@ -92,13 +87,6 @@ h2 {
     color: #888888; /* Darker gray when hovered */
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .container {
-        padding: 20px;
-    }
-}
-
 /* Mobile Version Styles */
 @media (max-width: 600px) {
     h2 {
@@ -112,15 +100,4 @@ h2 {
     .notification-date {
         font-size: 0.8rem;
     }
-}
-/* Style for the notification dot */
-.notification-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: red;
-    border: 2px solid white; /* Optional: To make the dot more prominent */
-    margin-top: -5px; /* Moves the dot upward slightly */
-    margin-left: 5px; /* Moves the dot to the right slightly */
 }

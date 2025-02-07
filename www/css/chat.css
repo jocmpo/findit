@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 100%;
     padding: 0;
     background-color: #f4f4f4;
 }
@@ -9,15 +9,14 @@ body {
 /* Chat Container */
 .chat-container {
     display: flex;
-    height: 100vh;  /* Full viewport height */
+    height: 100%;  
     background-color: #fff;
-    overflow: hidden; /* Prevent scrolling */
- /* Stack elements vertically */
-    position: fixed; /* Fix the container in place */
-    top: 0; /* Position at the top of the screen */
-    left: 0; /* Align to the left */
-    right: 0; /* Ensure it stretches across the full width */
-   /* Keep it on top of other elements */
+    overflow: hidden; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+
 }
 .side {
     display: flex;
@@ -36,7 +35,7 @@ body {
     top: 0;
     left: 0; /* Stay fixed at the left */
     height: 100%;
-    z-index: 999;
+    z-index: 1001;
 }
 
 /* If you want it to slide out or open */
@@ -53,6 +52,7 @@ body {
 
 /* Sidebar - Desktop View */
 @media (min-width: 768px) {
+
     .user-list {
         left: 0; /* Always visible on desktop */
         width: 300px; /* Ensure fixed width */
@@ -91,8 +91,14 @@ body {
 .search-bar {
     display: flex;
     margin-bottom: 20px;
+    margin-top: 60px;
 }
-
+@media (max-width: 767px) {
+    
+    .search-bar {
+    margin-top: 0;
+    }
+}
 .search-bar input {
     width: 80%;
     padding: 8px;
@@ -132,21 +138,26 @@ body {
 .user-list a.no-hover:hover {
     background-color: transparent;
 }
-/* Sidebar Close Button */
 .close-btn {
-    position: absolute;
+    position: relative; /* Fixes it to the top-right of .user-list */
     top: 10px;
-    right: 10px;
-    font-size: 1.5em;
+    left: 85%;
+    font-size: 1.8em; /* Slightly larger for better visibility */
     color: #4b84ff;
     cursor: pointer;
     background: none;
     border: none;
+    margin-top: 0;
+    margin-bottom: 15px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
 }
 
 .close-btn:hover {
     color: #296dff;
+    transform: scale(1.1); /* Slight zoom effect */
 }
+
 
 /* Toggle (Hamburger) Button */
 .toggle-btn {
@@ -257,6 +268,10 @@ body {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    .body{
+        margin: 0;
+        padding: 0;
+    }
     .chat-box {
     flex-grow: 1;
     display: flex;
@@ -335,6 +350,24 @@ body {
 .chat-placeholder p {
     margin: 0;
 }
+@media (max-width: 768px) {
+    .chat-placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed; /* Fixed to cover the entire viewport */
+        left: 0; /* Ensures it starts from the leftmost side */
+        top: 0; /* Ensures it starts from the top */
+        font-size: 1.5em;
+        text-align: left;
+        font-weight: bold;
+        padding: 2px;
+        margin: 0; 
+        padding: 0;
+        box-sizing: border-box; 
+    }
+    
+}
 
 /* Back button styling */
 .back-btn-container {
@@ -392,9 +425,9 @@ body {
 
 /* Messages Container */
 .messages {
-    max-height: 100vh; /* Set a fixed maximum height for the messages container */
-    overflow-y: auto;  /* Allows the messages to scroll vertically */
-    padding-right: 10px; /* Ensure some padding for the scrollbar */
+    max-height: calc(100vh - 190px); 
+    overflow-y: auto;  
+    padding-right: 10px; 
 }
 
 .image-upload-btn {
@@ -411,54 +444,77 @@ body {
 }
 /* General Message Form */
 .message-form {
-    margin: 0;
-    position: fixed; /* Stays fixed to the viewport */
+    position: fixed; 
     bottom: 0;
-    left: auto; /* Ensures it doesn't lock to the left edge */
-    right: 0; /* Explicitly define the right position */
-    background-color: white; /* White background for clarity */
-    padding: 10px 20px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 10px 15px;
     border-top: 1px solid #ccc;
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 10; /* Higher z-index to ensure visibility */
-    max-width: 100%; /* Adjusts to fit within the screen */
+    z-index: 1000;
+    width: 100%;
+    margin-bottom: 0;
 }
 
-/* Adjust for Desktop Sidebar */
+/* Adjust for Desktop with Sidebar */
 @media (min-width: 768px) {
     .message-form {
-        left: 0; /* Removes left alignment */
-        right: 0;
-        max-width: 100%; /* Ensures full width on mobile */
+        left: 350px; 
+        width: calc(100% - 380px); 
+        margin: 0;
     }
+    
 }
 
 /* Message Input Field */
 .message-form input[type="text"] {
-    flex: 1; /* Takes remaining space */
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
 }
 
+/* Submit Button */
+.message-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 /* Submit Button Hover Effect */
 .message-form button:hover {
-    background-color: #296dff; /* Highlighted color */
-    color: #fff; /* Ensures text contrast */
+    background-color: #296dff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+    .message-form {
+        left: 0;
+        width: 100%; /* Full width on smaller screens */
+    }
+    .messages {
+        max-height: calc(100vh - 150px); 
+    }
 }
 
 @media (max-width: 767px) {
     .message-form input[type="text"] {
-        margin-bottom: 5px; /* Adjusts space below input field */
+        margin-bottom: 5px; 
     }
         /* Style the button */
     button[type="submit"] {
         margin-bottom: 5px;
+        margin-right: 20px;
     }
-    }
+}
+
 /* Style the button */
 button[type="submit"] {
     background-color: #256EBB; /* Blue background */
@@ -473,7 +529,7 @@ button[type="submit"] {
 
 /* Style the icon */
 button[type="submit"] i {
-    margin-right: 8px; /* Adds space between the icon and the button text */
+    margin-right: 8px; 
 }
 
 /* Button hover effect */
@@ -499,12 +555,6 @@ button[type="submit"]:focus {
 }
 #imageUpload {
     display: none;
-}
-.message-form {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-    margin-bottom: 20px;
 }
 
 #imageUpload {
@@ -536,4 +586,26 @@ button[type="submit"]:focus {
 
 .image-upload-btn {
     cursor: pointer;
+}
+
+/* Mobile View: Hide user list by default, show toggle button */
+@media (max-width: 768px) {
+    .user-list {
+        transform: translateX(-100%); 
+        position: fixed;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .toggle-btn {
+        display: block; 
+    }
+
+    /* When menu is open, hide the toggle button */
+    .user-list.open ~ .toggle-btn {
+        display: none; /* Hide when menu is open */
+    }
+
+    .user-list.open {
+        transform: translateX(0); /* Show menu */
+    }
 }

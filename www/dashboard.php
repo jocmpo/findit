@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 session_start();
 include('includes/db.php');
 
@@ -94,7 +98,7 @@ $missing_items_count = isset($place_data['missing_items_count']) ? $place_data['
 
 
 <div class="items">
-    <h3>Nearby Listings</h3>
+    <h3 class="item-head">Nearby Listings</h3>
     <?php if (mysqli_num_rows($items_result) > 0) { ?>
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -190,37 +194,73 @@ $missing_items_count = isset($place_data['missing_items_count']) ? $place_data['
             <p>Location with the <br>most missing <br> item reports</p>
     </div>
 </div>
-<!--
-<div class="container">
-  <input type="radio" name="slider" id="item-1" checked>
-  <input type="radio" name="slider" id="item-2">
-  <input type="radio" name="slider" id="item-3">
-  
-  <div class="cards">
-    <label class="card" for="item-1" id="song-1">
-      <div class="confession">
-        <h3>Confession #1</h3>
-        <p>This is the first confession from our users.</p>
-      </div>
-    </label>
-    <label class="card" for="item-2" id="song-2">
-      <div class="confession">
-        <h3>Confession #2</h3>
-        <p>This is the second confession from our users.</p>
-      </div>
-    </label>
-    <label class="card" for="item-3" id="song-3">
-      <div class="confession">
-        <h3>Confession #3</h3>
-        <p>This is the third confession from our users.</p>
-      </div>
-    </label>
+
+<div class="testimonials-container">
+  <h3>User Testimonials</h3>
+
+  <div class="testimonial-carousel">
+
+    <div class="testimonial-item active">
+    <img src="css/img/quote.png" alt="Claimed GIF" class="quote">
+
+      <p>I lost my wallet at the park and thought it was gone forever. Thanks to this amazing service, someone found it and returned it to me within hours! So grateful for the honesty and efficiency.</p>
+      <h4>John Doe</h4>
+    </div>
+    <div class="testimonial-item">
+    <img src="css/img/quote.png" alt="Claimed GIF"class="quote">
+      <p> I lost my wallet at the park and thought it was gone forever. Thanks to this amazing service, someone found it and returned it to me within hours! So grateful for the honesty and efficiency.</p>
+      <h4>Jane Smith</h4>
+    </div>
+    <div class="testimonial-item">
+    <img src="css/img/quote.png" alt="Claimed GIF" class="quote">
+      <p>Left my phone in a coffee shop and didn’t realize until I got home. Thankfully, someone reported it here, and I was able to get it back the same day. Such a reliable system!</p>
+      <h4>Michael Brown</h4>
+    </div>
+  </div>
+
+  <div class="carousel-arrows">
+    <span class="arrow-left">&#10094;</span>
+    <span class="arrow-right">&#10095;</span>
   </div>
 </div>
-    -->
-        
+
+    
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+let index = 0;
+const items = document.querySelectorAll('.testimonial-item');
+const totalItems = items.length;
+
+function updateCarousel() {
+  items.forEach(item => {
+    item.classList.remove('middle', 'left', 'right');
+  });
+
+  items[index].classList.add('middle');
+  items[(index - 1 + totalItems) % totalItems].classList.add('left');
+  items[(index + 1) % totalItems].classList.add('right');
+}
+
+function nextTestimonial() {
+  index = (index + 1) % totalItems;
+  updateCarousel();
+}
+
+function prevTestimonial() {
+  index = (index - 1 + totalItems) % totalItems;
+  updateCarousel();
+}
+
+// Auto-rotate every 3 seconds
+setInterval(nextTestimonial, 3000);
+
+// Add event listeners for arrows
+document.querySelector('.arrow-left').addEventListener('click', prevTestimonial);
+document.querySelector('.arrow-right').addEventListener('click', nextTestimonial);
+
+// Initialize carousel
+updateCarousel();
+
     $(document).ready(function() {
         // Open modal with image
         $('.zoom-link').on('click', function() {

@@ -52,7 +52,6 @@ $result = $stmt->get_result();
 <body>
 <?php include('web_navbar.php'); ?>
     <div class="container">
-        <h2>&nbsp;</h2>
 
         <?php if ($result && $result->num_rows > 0): ?>
     <ul class="notification-list">

@@ -56,6 +56,8 @@ h4 {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 50%;
+    height: 100%; 
 }
 
 .item-details h3 {
@@ -182,7 +184,10 @@ h4 {
         max-width: 100%;
         height: auto;
     }
-
+    .item-details {
+        width: 100%;
+        height: 100%; 
+    }
     .related-items {
         gap: 15px;
         scroll-snap-type: x mandatory;
@@ -303,7 +308,7 @@ a.chat-link:focus {
 :root {
     --primary-color: #256ebb;
     --bg-color: #f9f9f9;
-    --btn-bg: rgba(0, 0, 0, 0.5);
+    --btn-bg: rgba(0, 0, 0, 0.4);
     --btn-hover-bg: rgba(0, 0, 0, 0.8);
     --text-color: #333;
     --shadow-color: rgba(0, 0, 0, 0.1);
@@ -312,14 +317,18 @@ a.chat-link:focus {
   /* Carousel Container: Fixed Size */
   .carousel-container {
     position: relative;
-    width: 250rem;          /* Fixed width */
-    height: 500px;         /* Fixed height (adjust as needed) */
+    width: 50%; 
+    height: 500px; 
     margin: 10px auto;
-    background-color: var(--bg-color);
     border-radius: 10px;
-    overflow: hidden;
+    overflow: hidden; 
     box-shadow: 0 6px 15px var(--shadow-color);
-  }
+    display: flex; 
+    align-items: center; 
+    background-color: #f5f5f5; /* Very light black transparency */
+    justify-content: center; 
+}
+
   @media (max-width: 768px) {
     .carousel-container {
         position: relative;
@@ -332,8 +341,8 @@ a.chat-link:focus {
 
   .carousel-track-container {
     overflow: hidden;
-    height: 100%;  /* Ensure it matches the fixed container height */
-  }
+    height: 100%;  
+}
   
   /* Carousel Track */
   .carousel-track {
@@ -357,7 +366,7 @@ a.chat-link:focus {
     width: 100%;
     height: 100%;         /* Make the image fill the container */
     display: block;
-    object-fit: cover;    /* Crop or scale image to fill without distortion */
+    object-fit: contain;    /* Crop or scale image to fill without distortion */
   }
   
   /* Navigation Buttons */

@@ -43,7 +43,6 @@ $images = explode(',', $item['image']);
 <body>
     <?php include('web_navbar.php'); ?>
 
-    <h2>Item Details</h2>
 <div class="item-detail">
 
     <div class="title-status">

@@ -1,7 +1,7 @@
 /* General Body and Page Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #8ecafc;
     margin: 0;
     padding: 0;
     display: flex;
@@ -19,8 +19,8 @@ form {
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
-    backdrop-filter: blur(10px);
     animation: fadeIn 1s ease-in-out;
+    background-color: white;
 }
 
 

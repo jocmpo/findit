@@ -79,3 +79,82 @@ section ul li a {
         font-size: 1.2rem;
     }
 }
+h1 {
+    font-size: 2em;
+    color: #14171a;
+    border-bottom: 2px solid #e1e8ed;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 0;
+    padding-right: 100px;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+       
+        padding: 3%;
+      
+    }
+
+    header h1 {
+        font-size: 2em;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+
+}
+.faq-item {
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    display: none; /* Hidden by default */
+    padding: 10px;
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+/* When active, rotate arrow */
+.faq-question.active .arrow {
+    transform: rotate(180deg);
+}
+.box{
+    width:100%;
+}
+.icon {
+    vertical-align: middle; 
+    margin-right: 10px; 
+  }
+  

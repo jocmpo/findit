@@ -231,7 +231,7 @@ p.error {
     }
 
     .camera-button {
-        margin-left: 0;
+        display: none;
     }
 
     .button-container {

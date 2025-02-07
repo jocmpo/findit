@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,6 +7,7 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    background-color: #8ecafc ;
 }
 
 /* Styling for Login and Register Buttons */
@@ -75,16 +75,16 @@ body {
     margin: 10px 0;
     padding: 10px;
     width: 100%;
-    border: 1px solid #e1e8ed;
+    border: 5px solid #000000;
     border-radius: 5px;
-    color: #000000; 
+    color: #000000; /* White text color */
 }
 
 /* Submit Button */
 .auth-form button {
     font-size: 1rem;
     padding: 10px;
-    width: 95%;
+    width: 100%;
     border: none;
     border-radius: 5px;
     background-color: #1da1f2;
@@ -105,8 +105,13 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
-    backdrop-filter: blur(10px);
     animation: fadeIn 1s ease-in-out;
+    background-color: #f4f4f4;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
 }
 
 /* Text Gradient for Headers */
@@ -124,17 +129,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  
 }
-@media (max-width: 768px) {
-    .auth-form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        width: 90%;
-        margin: 10px auto;
-    }
-}
+
 .auth-form input {
     padding: 0.8rem;
     border: none;
@@ -143,14 +139,15 @@ body {
     font-size: 1rem;
     transition: background 0.3s, transform 0.2s;
     max-width: 90%;
+    border: 1px solid#000000;
 }
 
 .auth-form input::placeholder {
-    color: #333;
+    color: #a6a6a6;
 }
 
 .auth-form input:focus {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.696);
     transform: scale(1.02);
 }
 
@@ -159,15 +156,53 @@ body {
     border: none;
 }
 
- a {
-    display: block;
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #1877f2;
+.reg {
+    color: #1da1f2;
     text-decoration: none;
-    text-align: center;
-    font-weight: bold;
+    cursor: pointer; 
+    text-decoration: none;
 }
-a:hover {
+
+.reg:hover {
+    color: #0d8ae9; 
     text-decoration: underline;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+    .logo {
+        height: 100px;
+        width: 100px;
+    }
+    .auth-container{
+        max-width: 75%;
+    }
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    color: gray;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px 10px 10px 30px; /* Adjust for icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;
+    width: 100%; /* Adjust width as needed */
+    text-align: left;
+    vertical-align: middle; /* Aligns it with input fields */
 }
